@@ -14,18 +14,18 @@ class treeCounter(val geography: Seq[String], val charIncrease: Int, val rowIncr
     if (charIx >= outOfBounds) charIx = charIx - outOfBounds
   }
 
-  private def checkTree(row: Int, char: Int): Int = {
-    if (geography(row).charAt(char) == '#') 1
-    else 0
+  private def checkTree(row: Int, char: Int): Long = {
+    if (geography(row).charAt(char) == '#') 1L
+    else 0L
   }
 
   def countTrees(): Long = {
-    var numTrees = 0
+    var numTrees = 0L
     while(rowIx < finishRow) {
-      numTrees += checkTree(rowIx, charIx)
+      numTrees = numTrees + checkTree(rowIx, charIx)
       increaseDepth()
     }
-    numTrees.toLong
+    numTrees
   }
 }
 
