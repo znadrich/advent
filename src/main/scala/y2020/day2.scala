@@ -9,7 +9,15 @@ class ParsedRow(val password: String,
                ) {
 }
 
-object PasswordVerifierV1 {
+trait PasswordVerifier {
+  def apply(password: String,
+    letterRule: Char,
+    minAllowed: Int,
+    maxAllowed: Int
+  ): Boolean
+}
+
+object PasswordVerifierV1 extends PasswordVerifier {
   def apply(password: String,
             letterRule: Char,
             minAllowed: Int,
@@ -20,7 +28,7 @@ object PasswordVerifierV1 {
   }
 }
 
-object PasswordVerifierV2 {
+object PasswordVerifierV2 extends PasswordVerifier {
   def apply(password: String,
             letterRule: Char,
             minAllowed: Int,
@@ -53,7 +61,7 @@ object Parser {
   }
 }
 
-object day2 extends App{
+object day2 extends App {
   val src = Source.fromFile("C:\\Users\\Zack\\IdeaProjects\\advent\\src\\main\\scala\\y2020\\resources\\day2.txt")
   val input: Seq[String] = src.getLines().toSeq
 

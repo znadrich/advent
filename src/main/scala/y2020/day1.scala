@@ -21,7 +21,7 @@ class getYear(year: Int, enums: Seq[Int]) {
   }
 }
 
-object day1 extends App{
+object day1 extends App {
   val src = Source.fromFile("C:\\Users\\Zack\\IdeaProjects\\advent\\src\\main\\scala\\y2020\\resources\\day1.txt")
   val input = src.getLines()
     .map ( _.toInt )
