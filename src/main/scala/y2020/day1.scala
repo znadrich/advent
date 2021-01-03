@@ -3,13 +3,9 @@ package y2020
 import scala.io.Source
 
 class getYear(year: Int, enums: Seq[Int]) {
-  def lessThan(year: Int): Seq[Int] = {
-    enums.filter(_ < year/2)
-  }
+  def lessThan(year: Int): Seq[Int] = enums.filter(_ < year/2)
 
-  def greaterThan(year: Int): Seq[Int] = {
-    enums.filter(_ >= year/2)
-  }
+  def greaterThan(year: Int): Seq[Int] = enums.filter(_ >= year/2)
 
   def eqYear(lesser: Int, greater: Int): Option[Int] = {
     val sum: Int = lesser + greater
@@ -17,9 +13,7 @@ class getYear(year: Int, enums: Seq[Int]) {
     if (sum == year) Some(product) else None
   }
 
-  def mapGreater(lesser: Int): Seq[Int] = {
-    greaterThan(year).flatMap { eqYear(lesser, _) }
-  }
+  def mapGreater(lesser: Int): Seq[Int] = greaterThan(year).flatMap { eqYear(lesser, _) }
 
   def get(): Int = {
     val answer = lessThan(year) flatMap { mapGreater }
